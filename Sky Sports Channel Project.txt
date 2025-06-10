@@ -1,11 +1,3 @@
-Sky sports channal
-
-
-
-
-
-
-
 
 create database Sky_sports;
 
