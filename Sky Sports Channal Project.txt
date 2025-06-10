@@ -1,0 +1,204 @@
+Sky sports channal
+
+
+
+
+
+
+
+
+create database Sky_sports;
+
+use Sky_sports;
+
+show tables;
+
+select * from sky;
+
+select * from sky1;
+
+SELECT sky.*,sky1.*
+FROM sky as sky
+INNER JOIN sky1 AS sky1
+ON sky.team = sky1.team;
+
+show tables;
+select team 
+from sky1 
+where `rank`=1 and `group`=7;
+
+select count(team) from sky1;
+
+select * from sky1;
+
+select team, matches_played from Sky1; 
+
+select * from sky;
+select * from sky1;
+
+select team , 100*(wins/matches_played) as win_percent from sky1;
+
+select team, max(goals_scored) as max_goal  from sky1 group by team;
+
+
+SELECT team, goals_scored 
+FROM sky1
+WHERE goals_scored =(select MAX(goals_scored));
+
+select team , Round(100*(draws/matches_played)) as Draw_percent from sky1;
+
+SELECT team, goals_scored 
+FROM sky1
+WHERE goals_scored =(select Min(goals_scored));
+
+
+select * from sky1;
+
+select team, 100*(losses/matches_played) as Losses_percent from sky1 order by 100*(losses/matches_played) asc;
+
+select team, Avg(goal_difference) as avg from sky1 group by team order by avg desc;
+
+select team, points from sky1 s 
+where points =0;
+
+select * from sky1 s 
+where expected_goal_scored<exp_goal_conceded;
+
+select * from sky1;
+
+select team, exp_goal_difference from sky1
+where exp_goal_difference between -0.5 and 0.5;
+
+select * from sky1
+where exp_goal_difference_per_90 order by exp_goal_difference_per_90 asc;
+
+select * from sky1;
+
+describe sky1;
+
+select team, max(players_used) from sky group by team;
+
+select team, avg_age from sky 
+where avg_age order by avg_age asc;
+
+select team, players_used 
+from sky
+where players_used = (SELECT max(players_used) FROM sky);
+
+
+select team, Avg(possession) as avg from sky group by team;
+ 
+select * from sky;
+
+select team from sky s 
+where games>=5;
+
+select * from sky 
+where minutes>600;
+
+select team, goals, assists from sky s order by goals asc;
+
+select team, pens_made, pens_att from sky order by pens_made desc;
+
+select team, cards_yellow, cards_red from sky 
+where cards_red =1  order by cards_yellow asc;
+
+select team, goals_per90, assists_per90, goals_assists_per90 from sky order by goals_assists_per90 desc;
+
+select team, goals_per90, assists_per90, goals_assists_per90 from sky order by goals_assists_per90 asc;
+
+select team, shots,shots_on_target, shots_on_target_pct from sky 
+where shots_on_target_pct<30 order by shots_on_target_pct asc;
+
+select team, shots_per90, shots_on_target_per90 from sky s 
+where team ='Belgium';
+
+select team, goals_per_shot, goals_per_shot_on_target, average_shot_distance from sky order by average_shot_distance desc;
+
+select team,errors, touches from sky s 
+where errors =0 and touches<1500;
+
+select team, fouls from sky s 
+where fouls =(select max(fouls) from sky);
+
+select team, max(fouls)
+from sky group by team;
+
+select * from sky1;
+  
+describe sky;
+ 
+select team, offsides from sky s 
+where offsides<10 or offsides>20;
+
+select team, aerials_won, aerials_lost, aerials_won_pct from sky order by aerials_won_pct desc;
+;
+select 'group', count(team) from sky1 group by 'group';
+
+SELECT team, `group`
+FROM sky1 s
+WHERE `group` =6;
+
+select team, `group` from sky1 
+where team ='Australia';
+select `group` 
+
+
+select `group`, avg(wins) from sky1 group by `group`;
+
+select * from sky s;
+
+select `group`, max(expected_goal_scored) from sky1 group by `group` order by max(expected_goal_scored) asc;
+ 
+select `group`, min(exp_goal_conceded) as min_exp_goal_conceded from sky1 group by `group` order by min_exp_goal_conceded desc;
+
+
+select `group`, avg(exp_goal_difference_per_90) from sky1 group by `group` order by  avg(exp_goal_difference_per_90) asc;
+
+
+select team, goals_scored, goals_against from sky1 s 
+where goals_scored = goals_against;
+
+select team, players_used from sky
+where players_used =(select max(players_used) from sky);
+
+select * from sky1;
+select * from sky; 
+describe sky;
+
+select team, players_used, avg_age, games, minutes from sky s 
+where minutes<500 and minutes>200;
+
+select * from sky1 order by points asc;
+
+select distinct team from sky1 
+order by team;
+
+select sky1.`group`, avg(avg_age) as avg_group_age from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group` order by avg_group_age desc;
+
+select sky1.`group`, sum(fouls) as sum_fouls from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by sum_fouls asc;
+
+select sky1.`group`, sum(games) as sum_games from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by sum_games  asc;
+
+select sky1.`group`, sum(players_used)as sum_players_used from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by sum_players_used asc;
+
+
+select sky1.`group`, sum(offsides)as sum_offsides from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by sum_offsides asc;
+
+
+select sky1.`group`, avg(passes_pct)as avg_passes_pct from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by avg_passes_pct asc;
+
+select sky1.`group`, avg(goals_per90)as avg_goals_per90 from sky1 inner join sky on sky1.team=sky.team
+group by sky1.`group`
+order by avg_goals_per90 asc;
